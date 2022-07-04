@@ -4,5 +4,7 @@ metadata:
   name: federation
   namespace: simple-app
 spec:
+  secretRef:
+    name: git-ssh-key
   pathname: 'https://github.com/ansonmez/rhacmgitopslab.git'
   type: GitHub
