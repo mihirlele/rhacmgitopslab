@@ -6,5 +6,5 @@ metadata:
 spec:
   secretRef:
     name: git-ssh-key
-  pathname: 'https://github.com/ansonmez/rhacmgitopslab.git'
+  pathname: 'https://github.com/mihirlele/rhacmgitopslab.git'
   type: GitHub
