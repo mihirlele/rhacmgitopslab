@@ -8,4 +8,5 @@ metadata:
 spec:
   clusterSelector:
     matchLabels:
-      clusterid: cluster1
+      env: testing
+  clusterReplicas: 1
