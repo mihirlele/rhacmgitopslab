@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/part-of: test-secret
   annotations:
     apps.open-cluster-management.io/github-branch: master
-    apps.open-cluster-management.io/github-path: lab-lab-matchlabels-03332345-assets
+    apps.open-cluster-management.io/github-path: lab-matchlabels-03332345-assets
 spec:
   channel:  simple-app/test-secret-channel
   placement: 
