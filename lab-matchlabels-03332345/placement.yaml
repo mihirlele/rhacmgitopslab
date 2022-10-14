@@ -7,5 +7,4 @@ metadata:
 spec:
   clusterSelector:
     matchLabels:
-      env: testing
-
+      local-cluster: true
