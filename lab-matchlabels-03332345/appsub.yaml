@@ -1,0 +1,17 @@
+apiVersion: apps.open-cluster-management.io/v1
+kind: Subscription
+metadata:
+  name: test-secret                           
+  namespace: simple-app
+  labels:
+    app: test-secret
+  annotations:
+    apps.open-cluster-management.io/github-branch: master
+    apps.open-cluster-management.io/github-path: lab-lab-matchlabels-03332345-assets
+spec:
+  channel:  simple-app/test-secret-channel
+  placement: 
+    placementRef: 
+      kind: PlacementRule
+      name: test-secret-placement
+
