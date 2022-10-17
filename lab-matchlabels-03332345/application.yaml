@@ -9,7 +9,7 @@ spec:
       - key: app  
         operator: In
         values:
-        - test-secret 
+        - test-secret-1
   componentKinds:
   - group: app.ibm.com/v1alpha1
     kind: Subscription
