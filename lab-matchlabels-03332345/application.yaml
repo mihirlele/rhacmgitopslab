@@ -5,11 +5,8 @@ metadata:
   namespace: simple-app  
 spec:
   selector:
-    matchExpressions:
-      - key: app  
-        operator: In
-        values:
-        - test-secret-1
+    matchLabels:
+      app: test-secret-1
   componentKinds:
   - group: app.ibm.com/v1alpha1
     kind: Subscription
