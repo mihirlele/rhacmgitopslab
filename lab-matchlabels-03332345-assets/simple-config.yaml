@@ -4,6 +4,6 @@ data:
 kind: ConfigMap
 metadata:
   creationTimestamp: null
-  name: test-secret
+  name: simple-config
   namespace: simple-app
 
