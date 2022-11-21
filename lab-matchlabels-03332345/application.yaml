@@ -8,7 +8,7 @@ spec:
   - key: app  
     operator: In
     values:
-    - simple-app-1
+    - simple-config-1
   componentKinds:
   - group: app.ibm.com/v1alpha1
     kind: Subscription
