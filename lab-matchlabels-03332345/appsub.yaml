@@ -4,8 +4,8 @@ metadata:
   name: test-secret-subscription                           
   namespace: simple-app
   labels:
-    app: test-secret-1
-    app.kubernetes.io/part-of: test-secret-1
+    app: simple-config-1
+    app.kubernetes.io/part-of: simple-config-1
   annotations:
     apps.open-cluster-management.io/github-branch: master
     apps.open-cluster-management.io/github-path: lab-matchlabels-03332345-assets
