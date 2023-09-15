@@ -12,5 +12,5 @@ spec:
   channel:  simple-app/federation
   placement: 
     placementRef: 
-      kind: PlacementRule
+      kind: Placement
       name: cluster1only     
