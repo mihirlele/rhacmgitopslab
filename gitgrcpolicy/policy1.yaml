@@ -1,65 +1,66 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: Policy
 metadata:
-  name: testprojectpolicy
-  namespace: default
+  name: config-global-banners
+  namespace: rhacm-banner-policies
   annotations:
     policy.open-cluster-management.io/categories: CM Configuration Management
-    policy.open-cluster-management.io/standards: NIST SP 800-53
     policy.open-cluster-management.io/controls: CM-2 Baseline Configuration
+    policy.open-cluster-management.io/standards: NIST SP 800-53
 spec:
   disabled: false
-  remediationAction: enforce
+  remediationAction: inform
   policy-templates:
     - objectDefinition:
         apiVersion: policy.open-cluster-management.io/v1
         kind: ConfigurationPolicy
         metadata:
-          name: policy-namespace
+          name: config-global-banners
         spec:
-          remediationAction: inform
-          severity: low
-          namespaceSelector:
-            exclude:
-              - kube-*
-            include:
-              - default
           object-templates:
             - complianceType: musthave
               objectDefinition:
-                kind: Namespace
-                apiVersion: v1
+                apiVersion: console.openshift.io/v1
+                kind: ConsoleNotification
                 metadata:
-                  name: testnamespace
----
-apiVersion: cluster.open-cluster-management.io/v1beta1
-kind: Placement
-metadata:
-  name: testprojectpolicy-placement
-  namespace: default
-spec:
-  predicates:
-    - requiredClusterSelector:
-        labelSelector:
-          matchExpressions:
-            - key: local-cluster
-              operator: In
-              values:
-                - "true"
-  clusterSets:
-    - default                
+                  name: global-banner
+                spec:
+                  backgroundColor: '#c00e19'
+                  color: '#000000'
+                  link:
+                    href: 'https://confluence.zf-world.com/display/CAZAdmin/2023+September+-+planned+maintenance'
+                    text: Please visit the following link for details
+                  location: BannerTop
+                  text: Cluster maintenance
+          remediationAction: inform
+          severity: high
 ---
 apiVersion: policy.open-cluster-management.io/v1
 kind: PlacementBinding
 metadata:
-  name: testprojectpolicy-placement
-  namespace: default
+  name: binding-policy-global-banners
+  namespace: rhacm-banner-policies
 placementRef:
-  name: testprojectpolicy-placement
-  apiGroup: cluster.open-cluster-management.io
-  kind: Placement
+  name: placement-policy-global-banners
+  kind: PlacementRule
+  apiGroup: apps.open-cluster-management.io
 subjects:
-  - name: testprojectpolicy
-    apiGroup: policy.open-cluster-management.io
-    kind: Policy
-
+- name: config-global-banners
+  kind: Policy
+  apiGroup: policy.open-cluster-management.io
+---
+apiVersion: apps.open-cluster-management.io/v1
+kind: PlacementRule
+metadata:
+  name: placement-policy-global-banners
+  namespace: rhacm-banner-policies
+spec:
+  clusterConditions:
+  - status: "True"
+    type: ManagedClusterConditionAvailable
+  clusterSelector:
+    matchExpressions:
+      - key: zf-global-banners-config
+        operator: In
+        values:
+          - 'enabled'
