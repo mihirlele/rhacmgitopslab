@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: quay.io/cloud-bulldozer/nginx:latest
+  repository: quay.io/ukhomeofficedigital/nginx-proxy
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
