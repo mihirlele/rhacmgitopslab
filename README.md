@@ -23,3 +23,5 @@ Disclaimer
 This lab is RH ACM translated version of https://github.com/openshift/federation-dev . 
 Thanks to contributors of referenced lab. 
 -----
+
+Practice note: this line exists so a pull request can be opened and merged.
